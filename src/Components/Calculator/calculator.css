@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 400px;
+    height: 550px;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-left: 200px;
+    border-style: solid;
+    border-color: black;
+    background-color: #ffd7d7;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-container{
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+    width: 100%;
+    padding: 0em 1.5em;
+}
+.display-box{
+    background: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0.5em;
+    flex: 1;
+    font-size: 20px;
+}
+.backspace-button{
+    border-radius: 20px;
+    background: #ffa7a6;
+    width: 75px;
+    height: 75px;
+    border-style: solid;
+    border-color: black;
+}
+
+.result-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    gap: 17px;
+    padding: 0em 1.5em;
+}
+.result-box{
+    background: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0.5em;
+    flex: 1;
+    font-size: 20px;
+}
+.AC-button{
+    border-radius: 20px;
+    background: #ffa7a6;
+    width: 75px;
+    height: 75px;
+    border-style: solid;
+    border-color: black;
+    font-size: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+    margin-top: 10px;
+}
+button {
+    width: 75px;
+    height: 75px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    font-size: 20px;
+    background: white;
+}
+.DivisionOperator,
+.MultiplicationOperator,
+.SubtractionOperator,
+.AdditionOperator,
+.EqualSign,
+.Dot {
+    background: #ffa7a6;
+}
+
+button:active {
+    background: lightgray;
+}
