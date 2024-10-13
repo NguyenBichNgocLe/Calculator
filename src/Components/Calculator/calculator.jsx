@@ -3,16 +3,32 @@ import './calculator.css';
 import backspace_icon from '../Assets/backspace_icon_48.png';
 
 function Calculator() {
-    const [display, setDisplay] = useState('');
-    // const [result, setResult] = useState('');
+    const [display, setDisplay] = useState("");
+    const [result, setResult] = useState('');
 
     function handleClick(e) {
         const value = e.target.name;
-        setDisplay(display + value);
+        if(result !== '') {
+            setDisplay(value);
+            setResult('');
+        } else setDisplay(display + value);
+    }
+
+    function handleOperator(e) {
+        const op = e.target.name;
+        const lastChar = display[display.length - 1];
+
+        if(!"+-*/".includes(lastChar)) 
+            setDisplay(display + op);
     }
 
     function handleEqual() {
-        console.log(display);
+        try {
+            const evaluatedResult = eval(display);
+            setResult(evaluatedResult);
+        } catch (error) {
+            setResult("Error");
+        }
     }
 
     function handleBackspace() {
@@ -21,6 +37,7 @@ function Calculator() {
 
     function handleAC() {
         setDisplay("");
+        setResult('');
     }
 
     return(
@@ -32,32 +49,32 @@ function Calculator() {
                 </button>
             </div>
             <div className="result-container">
-                <div className="result-box">Result</div>
+                <div className="result-box">{result}</div>
                 <button className="AC-button" name="AC" onClick={handleAC}>AC</button>
             </div>
             <div className="button-container">
                 <button className="Number7" name="7" onClick={handleClick}>7</button>
                 <button className="Number8" name="8" onClick={handleClick}>8</button>
                 <button className="Number9" name="9" onClick={handleClick}>9</button>
-                <button className="DivisionOperator" name="/" onClick={handleClick}>/</button>
+                <button className="DivisionOperator" name="/" onClick={handleOperator}>/</button>
             </div>
             <div className="button-container">
                 <button className="Number4" name="4" onClick={handleClick}>4</button>
                 <button className="Number5" name="5" onClick={handleClick}>5</button>
                 <button className="Number6" name="6" onClick={handleClick}>6</button>
-                <button className="MultiplicationOperator" name="*" onClick={handleClick}>*</button>
+                <button className="MultiplicationOperator" name="*" onClick={handleOperator}>*</button>
             </div>
             <div className="button-container">
                 <button className="Number1" name="1" onClick={handleClick}>1</button>
                 <button className="Number2" name="2" onClick={handleClick}>2</button>
                 <button className="Number3" name="3" onClick={handleClick}>3</button>
-                <button className="SubtractionOperator" name="-" onClick={handleClick}>-</button>
+                <button className="SubtractionOperator" name="-" onClick={handleOperator}>-</button>
             </div>
             <div className="button-container">
                 <button className="Number0" name="0" onClick={handleClick}>0</button>
-                <button className="Dot" name=".">.</button>
+                <button className="Dot" name="." onClick={handleClick}>.</button>
                 <button className="EqualSign" name="=" onClick={handleEqual}>=</button>
-                <button className="AdditionOperator" name="+" onClick={handleClick}>+</button>
+                <button className="AdditionOperator" name="+" onClick={handleOperator}>+</button>
             </div>
         </div>
     );
